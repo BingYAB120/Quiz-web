@@ -10,33 +10,38 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        background: #d9f3f7; 
-        overflow: hidden; 
+        background: #d9f3f7;
+        overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-
+    
       #unity-canvas {
-        width: 960px;  /* ย่อจาก 1920px ลงครึ่งหนึ่ง */
-        height: 540px; /* ย่อจาก 1080px ลงครึ่งหนึ่ง */
+        width: 960px;
+        height: 540px;
         max-width: 100%;
         background: #231F20;
-        border-radius: 10px; 
-        box-shadow: 0 0 20px rgba(0,0,0,0.5); 
-        box-sizing: border-box;  /* เพิ่มการคำนวณขนาดที่ถูกต้อง */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        box-sizing: border-box;
+        position: relative; /* เพิ่มตำแหน่ง */
       }
-
-      /* ทำให้ canvas ขยายเต็มหน้าจอเมื่อใช้บนมือถือ */
+    
+      /* ปรับขนาดของ canvas เมื่ออยู่ในโหมดมือถือ */
       @media (max-width: 1024px) {
         #unity-canvas {
-          width: 100vw;   /* ใช้ขนาดหน้าจอของอุปกรณ์ */
-          height: 100vh;  /* ใช้ความสูงของหน้าจอ */
+          width: 100vw;
+          height: 100vh;
           max-width: none;
           max-height: none;
+          position: absolute; /* ปรับให้ canvas อยู่ในตำแหน่งที่ถูกต้อง */
+          top: 0;
+          left: 0;
         }
       }
     </style>
+    
   </head>
   <body>
     <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
