@@ -41,7 +41,7 @@
   <body>
     <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
 
-    <script src="Build/WEB.loader.js"></script>
+    <script src="Build/WEBtest.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
@@ -61,9 +61,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WEB.data",
-        frameworkUrl: "Build/WEB.framework.js",
-        codeUrl: "Build/WEB.wasm",
+        dataUrl: "Build/WEBtest.data",
+        frameworkUrl: "Build/WEBtest.framework.js",
+        codeUrl: "Build/WEBtest.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Quiz",
