@@ -18,38 +18,40 @@
       }
 
       #unity-canvas {
-        width: 960px;  /* กำหนดขนาดความกว้างของ canvas */
-        height: 540px; /* กำหนดขนาดความสูงของ canvas */
+        width: 100%;  /* ทำให้ความกว้างพอดีกับหน้าจอ */
+        height: 100%; /* ทำให้ความสูงพอดีกับหน้าจอ */
+        max-width: 1920px;  /* ความกว้างสูงสุดเท่ากับ 1920px */
+        max-height: 1080px; /* ความสูงสูงสุดเท่ากับ 1080px */
         background: #231F20;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        object-fit: contain;  /* ทำให้ canvas ไม่บิดเบี้ยว */
       }
 
       @media (max-width: 1024px) {
         #unity-canvas {
-          width: 960px;  /* คงขนาดเหมือนเดิม */
-          height: 540px; /* คงขนาดเหมือนเดิม */
+          width: 100%; /* ให้ขยายเต็มหน้าจอ */
+          height: auto; /* ปรับความสูงให้เหมาะสมตามอัตราส่วน */
         }
       }
     </style>
 
-    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
   </head>
   <body>
-    <canvas id="unity-canvas" width="960" height="540" tabindex="-1"></canvas>
+    <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
 
     <script src="Build/Test2.loader.js"></script>
     <script>
-      // ตรวจจับถ้าเป็นมือถือ
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
         meta.name = 'viewport';
-        meta.content = 'width=1024, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0';
+        meta.content = 'width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0';
         document.getElementsByTagName('head')[0].appendChild(meta);
 
         var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "960px";  /* คงขนาดเหมือน desktop */
-        canvas.style.height = "540px"; /* คงขนาดเหมือน desktop */
+        canvas.style.width = "100%";  /* ขยายเต็มหน้าจอ */
+        canvas.style.height = "100%"; /* ขยายเต็มหน้าจอ */
         canvas.style.position = "fixed";
         canvas.style.top = "0";
         canvas.style.left = "0";
