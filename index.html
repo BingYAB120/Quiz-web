@@ -4,46 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Quiz</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        background: #d9f3f7; 
-        overflow: hidden; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    
-      #unity-canvas {
-        width: 960px;  /* ย่อจาก 1920px ลงครึ่งหนึ่ง */
-        height: 540px; /* ย่อจาก 1080px ลงครึ่งหนึ่ง */
-        max-width: 100%;
-        background: #231F20;
-        border-radius: 10px; 
-        box-shadow: 0 0 20px rgba(0,0,0,0.5); 
-      }
-    
-      /* ทำให้ canvas ขยายเต็มหน้าจอเมื่อใช้บนมือถือ */
-      @media (max-width: 1024px) {
-        #unity-canvas {
-          width: 100vw;   /* ใช้ขนาดหน้าจอของอุปกรณ์ */
-          height: 100vh;  /* ใช้ความสูงของหน้าจอ */
-          max-width: none;
-          max-height: none;
-        }
-      }
-    </style>
-    
   </head>
-  <body>
-    <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
-
-    <script src="Build/Test2.loader.js"></script>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1" style="width: 1920px; height: 1080px; background: #231F20"></canvas>
+    <script src="Build/WEB.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -53,21 +20,20 @@
         canvas.style.width = "100%";
         canvas.style.height = "100%";
         canvas.style.position = "fixed";
-        canvas.style.top = "0";
-        canvas.style.left = "0";
-        canvas.style.transform = "none";
 
-        document.body.style.display = "block";
+        document.body.style.textAlign = "left";
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Test2.data",
-        frameworkUrl: "Build/Test2.framework.js",
-        codeUrl: "Build/Test2.wasm",
+        dataUrl: "Build/WEB.data",
+        frameworkUrl: "Build/WEB.framework.js",
+        codeUrl: "Build/WEB.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Quiz",
         productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
   </body>
