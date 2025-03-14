@@ -3,7 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Quiz</title>
+    <title>Quiz</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #d9f3f7; 
+        overflow: hidden; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      #unity-canvas {
+        width: 960px;  /* ย่อจาก 1920px ลงครึ่งหนึ่ง */
+        height: 540px; /* ย่อจาก 1080px ลงครึ่งหนึ่ง */
+        max-width: 100%;
+        background: #231F20;
+        border-radius: 10px; 
+        box-shadow: 0 0 20px rgba(0,0,0,0.5); 
+      }
+    
+      /* ทำให้ canvas ขยายเต็มหน้าจอเมื่อใช้บนมือถือ */
+      @media (max-width: 1024px) {
+        #unity-canvas {
+          width: 100vw;   /* ใช้ขนาดหน้าจอของอุปกรณ์ */
+          height: 100vh;  /* ใช้ความสูงของหน้าจอ */
+          max-width: none;
+          max-height: none;
+        }
+      }
+    </style>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1" style="width: 1920px; height: 1080px; background: #231F20"></canvas>
