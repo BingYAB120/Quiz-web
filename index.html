@@ -16,29 +16,29 @@
         justify-content: center;
         align-items: center;
       }
-    
+
       #unity-canvas {
-        width: 80vw;  /* กำหนดความกว้างเป็น 80% ของหน้าจอ */
-        height: 80vh; /* กำหนดความสูงเป็น 80% ของหน้าจอ */
-        max-width: 100%;
-        max-height: 100%;
+        width: 960px;  /* ขนาดคงที่ 960px */
+        height: 540px; /* ขนาดคงที่ 540px */
         background: #231F20;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
         box-sizing: border-box;
       }
-    
-      /* ปรับขนาดของ canvas เมื่ออยู่ในโหมดมือถือ */
+
+      /* สำหรับมือถือ */
       @media (max-width: 1024px) {
         #unity-canvas {
-          width: 90vw;   /* กำหนดความกว้างเป็น 90% ของหน้าจอ */
-          height: 90vh;  /* กำหนดความสูงเป็น 90% ของหน้าจอ */
+          max-width: 100%; /* ทำให้ขยายเต็มความกว้างหน้าจอ */
+          max-height: 100%; /* ทำให้ขยายเต็มความสูงหน้าจอ */
+          width: auto; /* ปรับขนาดให้เหมาะสม */
+          height: auto; /* ปรับขนาดให้เหมาะสม */
         }
       }
     </style>
   </head>
   <body>
-    <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
+    <canvas id="unity-canvas" width="960" height="540" tabindex="-1"></canvas>
 
     <script src="Build/WEBtest.loader.js"></script>
     <script>
@@ -49,11 +49,12 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
 
         var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "90vw";  /* ใช้ขนาด 90% ของหน้าจอ */
-        canvas.style.height = "90vh"; /* ใช้ขนาด 90% ของหน้าจอ */
-        canvas.style.position = "absolute";
-        canvas.style.top = "5vh";    /* ให้มันเริ่มจาก 5% ของความสูงหน้าจอ */
-        canvas.style.left = "5vw";   /* ให้มันเริ่มจาก 5% ของความกว้างหน้าจอ */
+        canvas.style.width = "960px";  /* ขนาดคงที่ 960px */
+        canvas.style.height = "540px"; /* ขนาดคงที่ 540px */
+        canvas.style.position = "absolute"; /* ใช้ตำแหน่ง absolute เพื่อให้มันอยู่กลางหน้าจอ */
+        canvas.style.top = "50%";         /* ตั้งตำแหน่งจากด้านบน */
+        canvas.style.left = "50%";        /* ตั้งตำแหน่งจากด้านซ้าย */
+        canvas.style.transform = "translate(-50%, -50%)"; /* ย้ายให้กลางหน้าจอ */
 
         document.body.style.display = "block";
       }
