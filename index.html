@@ -10,33 +10,33 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        background: #d9f3f7;
-        overflow: hidden;
+        background: #d9f3f7; 
+        overflow: hidden; 
         display: flex;
         justify-content: center;
         align-items: center;
       }
-
+    
       #unity-canvas {
-        width: 100%;  /* ทำให้ความกว้างพอดีกับหน้าจอ */
-        height: 100%; /* ทำให้ความสูงพอดีกับหน้าจอ */
-        max-width: 1920px;  /* ความกว้างสูงสุดเท่ากับ 1920px */
-        max-height: 1080px; /* ความสูงสูงสุดเท่ากับ 1080px */
+        width: 960px;  /* ย่อจาก 1920px ลงครึ่งหนึ่ง */
+        height: 540px; /* ย่อจาก 1080px ลงครึ่งหนึ่ง */
+        max-width: 100%;
         background: #231F20;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        object-fit: contain;  /* ทำให้ canvas ไม่บิดเบี้ยว */
+        border-radius: 10px; 
+        box-shadow: 0 0 20px rgba(0,0,0,0.5); 
       }
-
+    
+      /* ทำให้ canvas ขยายเต็มหน้าจอเมื่อใช้บนมือถือ */
       @media (max-width: 1024px) {
         #unity-canvas {
-          width: 100%; /* ให้ขยายเต็มหน้าจอ */
-          height: auto; /* ปรับความสูงให้เหมาะสมตามอัตราส่วน */
+          width: 100vw;   /* ใช้ขนาดหน้าจอของอุปกรณ์ */
+          height: 100vh;  /* ใช้ความสูงของหน้าจอ */
+          max-width: none;
+          max-height: none;
         }
       }
     </style>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    
   </head>
   <body>
     <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
@@ -46,12 +46,12 @@
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
         meta.name = 'viewport';
-        meta.content = 'width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
 
         var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "100%";  /* ขยายเต็มหน้าจอ */
-        canvas.style.height = "100%"; /* ขยายเต็มหน้าจอ */
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
         canvas.style.position = "fixed";
         canvas.style.top = "0";
         canvas.style.left = "0";
