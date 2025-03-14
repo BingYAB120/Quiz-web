@@ -18,30 +18,24 @@
       }
     
       #unity-canvas {
-        width: 960px;
-        height: 540px;
+        width: 80vw;  /* กำหนดความกว้างเป็น 80% ของหน้าจอ */
+        height: 80vh; /* กำหนดความสูงเป็น 80% ของหน้าจอ */
         max-width: 100%;
+        max-height: 100%;
         background: #231F20;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
         box-sizing: border-box;
-        position: relative; /* เพิ่มตำแหน่ง */
       }
     
       /* ปรับขนาดของ canvas เมื่ออยู่ในโหมดมือถือ */
       @media (max-width: 1024px) {
         #unity-canvas {
-          width: 100vw;
-          height: 100vh;
-          max-width: none;
-          max-height: none;
-          position: absolute; /* ปรับให้ canvas อยู่ในตำแหน่งที่ถูกต้อง */
-          top: 0;
-          left: 0;
+          width: 90vw;   /* กำหนดความกว้างเป็น 90% ของหน้าจอ */
+          height: 90vh;  /* กำหนดความสูงเป็น 90% ของหน้าจอ */
         }
       }
     </style>
-    
   </head>
   <body>
     <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
@@ -55,12 +49,11 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
 
         var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.style.position = "fixed";
-        canvas.style.top = "0";
-        canvas.style.left = "0";
-        canvas.style.transform = "none";
+        canvas.style.width = "90vw";  /* ใช้ขนาด 90% ของหน้าจอ */
+        canvas.style.height = "90vh"; /* ใช้ขนาด 90% ของหน้าจอ */
+        canvas.style.position = "absolute";
+        canvas.style.top = "5vh";    /* ให้มันเริ่มจาก 5% ของความสูงหน้าจอ */
+        canvas.style.left = "5vw";   /* ให้มันเริ่มจาก 5% ของความกว้างหน้าจอ */
 
         document.body.style.display = "block";
       }
